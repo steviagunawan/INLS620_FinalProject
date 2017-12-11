@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Home Page</title>
+</head>
+<body>
+
+<div itemscope
+     itemtype = "http://schema.org/WebPage">
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="homepage"><a itemprop = "URL" rel="index" href="{{url_for( 'userlist') }}">Home</a></li>
+      <li class="game-list"><a itemprop = "URL" rel="next" href="{{ url_for('gamelist') }}">Game List</a></li>
+    </ul>
+  </nav>
+
+  <h1 itemprop = "headline" class = "page-title">User Profile</h1>
+  <!-- can we use headline/do we need microdata for headers? -->
+
+  <div itemscope
+       itemtype = "http://schema.org/ProfilePage">
+    <img itemprop = "image" class = "user-photo" src="{{users.photo}}" alt="User Photo">
+  <div class="biodata">
+    <h4 itemprop = "headline" class = "about">About</h4>
+    <ol>
+      <li itemprop = "name">{{users.name}}</li>
+      <li itemprop = "description" >{{users.bio}}</li>
+    </ol>
+  </div>
+
+  </div>
+<!--
+  <h4 class ="user-review">Reviews</h4>
+  <ul>
+
+    <li><a itemprop = "URL" rel="item" href="review.html">Review 1</a></li>
+  </ul>
+
+-->
+  <h4 class ="all-accounts">All Accounts</h4>
+  <ul>
+    <li class = "all-users"><a  itemprop = "URL" rel="related" href="{{url_for('userlist')}}">All Users</a></li>
+    <li class = "banned-users"><a itemprop = "URL" rel="related" href="banned_account.html">Banned Users</a></li>
+  </ul>
+
+</div>
+</body>
+</html>

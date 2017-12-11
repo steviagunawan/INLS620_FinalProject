@@ -1,0 +1,72 @@
+{
+  "games": {
+    "hij123": {
+      "title": "World of Warcraft",
+      "description": "This game is a massively multiplayer online role-playing game (MMORPG) released in 2004 by Blizzard Entertainment.",
+      "game_id": "hij123",
+      "reviews":
+        {
+          "abc123": {
+            "review_name": "Review 1",
+            "text": "I think this game is very fun. It has good game mechanics, and their cinematics are wonderful.",
+            "author": "Mark Twan",
+            "date": "12/4/17",
+            "review_id": "abc123",
+            "comments": []
+          },
+          "def123": {
+            "review_name": "Review 2",
+            "text": "This game is not fun! It gets very repetitive and boring.",
+            "author": "Jane Austin",
+            "date": "11/9/17",
+            "review_id": "def123",
+            "comments": []
+          }
+        }
+    },
+    "klm123":{
+      "title": "Dota 2",
+      "description": "This game is a free-to-play multiplayer online battle arena gane (MOBA) developed and published by Valve Corporation.",
+      "game_id": "klm123",
+      "reviews": {
+        "pol123": {
+          "review_name": "Review 1",
+          "text": "This game is alright. I like that it's free to play but the mechanics of the game can get complex.",
+          "author": "John Smith",
+          "date": "12/4/17",
+          "review_id": "pol123",
+          "comments": []
+        }
+      }
+    }
+  },
+  "users":{
+    "qwe123": {
+      "name": "John Smith",
+      "email": "jsmith@email.com",
+      "bio": "My name is John. I like to play games.",
+      "photo": "http://cdn1-www.dogtime.com/assets/uploads/2011/03/puppy-development-300x200.jpg",
+      "user_id": "qwe123",
+      "reviews": {
+        "review_id": "pol123"
+      }
+    },
+    "rty123": {
+      "name": "Mark Twan",
+      "email": "twan@email.com",
+      "bio": "My name is Mark. I'm from NC.",
+      "photo": "http://cdn1-www.dogtime.com/assets/uploads/2011/03/puppy-development-300x200.jpg",
+      "user_id": "rty123",
+      "reviews" :{
+        "review_id": "abc123"
+      }
+    }
+
+  }
+}
+
+
+
+
+
+

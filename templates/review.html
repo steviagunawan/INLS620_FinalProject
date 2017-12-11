@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Review</title>
+</head>
+<body>
+
+<div itemscope
+     itemtype = "http://schema.org/WebPage">
+
+     <nav class="navbar">
+       <ul class="navbar-list">
+         <li class="homepage"><a itemprop = "URL" rel="index" href="{{url_for( 'userlist') }}">Home</a></li>
+         <li class="game-list"><a itemprop = "URL" rel="next" href="{{ url_for('gamelist') }}">Game List</a></li>
+       </ul>
+     </nav>
+
+     <div itemscope
+          class = "review-data"
+          itemtype = "http://schema.org/Review">
+       <h1 itemprop = "headline" class = "page-title">{{reviews.review_name}} for {{games.title}}</h1>
+
+          <div class = "ind-review">
+
+            <!--<h4 itemprop = "name" >{{reviews.review_name}}</h4>-->
+            <p itemprop = "review" class = "review-text">
+              {{reviews.text}}
+            </p>
+            <p itemprop = "author">
+               Written by: {{reviews.author}}
+            </p>
+              <p itemprop= "dateCreated" >
+              Date: {{reviews.date}}
+              </p>
+          </div>
+       </div>
+     <!-- errors in the review?? -->
+
+
+     <form class = "update-review" method = "patch">
+       <h4>Update your review</h4>
+       <!--Username:<br>-->
+       <!--<input type="text" name="username"><br>-->
+       Updates<br>
+       <ul>
+          {% for comment in reviews.comments %}
+          <li> <p itemprop="comment" property="text">{{ comment }}</p> </li>
+          {% endfor %}
+       </ul>
+         <textarea type = "text" name="comment"></textarea><br>
+       <input class = "update" id= "update-review-button" type="submit" value="Submit">
+     </form>
+    <script>
+        var form = document.querySelector('form.update-review');
+        var button = document.querySelector('form.update-review input.update');
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          var request = new XMLHttpRequest();
+          request.open('PATCH', window.location.pathname);
+          request.onreadystatechange = function () {
+            if (XMLHttpRequest.DONE === request.readyState
+                && 200 === request.status) {
+              window.location.reload(true);
+            }
+          }
+          request.send(new FormData(form));
+        }, false);
+    </script>
+     <div>
+        <a itemprop = "URL" class = "game-review" rel = "prev" href="/reviews/{{games.game_id}}">Back to Game Review List</a>
+    </div>
+</div>
+</body>
+</html>

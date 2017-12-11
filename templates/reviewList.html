@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Game Review List</title>
+</head>
+<body>
+  
+<div itemscope
+     itemtype = "http://schema.org/WebPage">
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="homepage"><a itemprop = "URL" rel="index" href="{{url_for( 'userlist') }}">Home</a></li>
+      <li class="game-list"><a itemprop = "URL"rel="next" href="{{ url_for('gamelist') }}">Game List</a></li>
+    </ul>
+  </nav>
+
+  <h1 itemprop = "headline" class = "page-title">{{games.title}}</h1>
+
+  <div itemscope
+       itemtype = "http://schema.org/ItemList">
+    <h4 itemprop = "name" class= "game-review">Reviews For This Game</h4>
+    <ul>
+      {% for review_id, review in reviews.items()%}
+      <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+        <a itemprop = "URL" rel="item" href="/reviews/{{games.game_id}}/{{review.review_id}}">{{review.review_name}}</a>
+        <!--<meta itemprop = "position" content = "1"> -->
+      </li>
+        {% endfor %}
+
+    </ul>
+  </div>
+
+
+  <form class="post-review" action="/reviews/{{games.game_id}}" method="post">
+    <h4>Post A Review</h4>
+    Name:<br>
+    <input type="text" name="author"><br>
+    Name for review:<br>
+      <input type="text" name="review_name"><br>
+      Review:<br>
+    <input type="text" name="text"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+</div>
+</body>
+</html>

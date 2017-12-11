@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>User Account</title>
+</head>
+<body>
+
+<div itemscope itemtype = "http://schema.org/WebPage">
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="homepage"><a itemprop = "URL" rel="index" href="{{url_for( 'userlist') }}">Home</a></li>
+      <li class="game-list"><a itemprop = "URL" rel="next" href="{{ url_for('gamelist') }}">Game List</a></li>
+    </ul>
+  </nav>
+
+  <div itemscope itemtype = "schema.org/ItemList">
+    <h1 itemprop = "name" class = "page-title">Users Account</h1>
+
+    <div class="users">
+      <ul>
+          {% for user_id, user in users.items()%}
+        <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+          <a itemprop = "URL" rel="item" href="users/{{user.user_id}}">{{user.name}}</a>
+          <meta itemprop = "position" content = "1">
+        </li>
+          {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

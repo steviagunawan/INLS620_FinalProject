@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Game List</title>
+</head>
+<body>
+
+<div itemscope
+     itemtype = "http://schema.org/WebPage">
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="homepage"><a itemprop = "URL" rel="index" href="{{url_for( 'userlist') }}">Home</a></li>
+      <li class="game-list"><a itemprop = "URL" rel="next" href="{{ url_for('gamelist') }}">Game List</a></li>
+    </ul>
+  </nav>
+
+  <div itemscope
+       itemtype = "schema.org/ItemList">
+    <h1 itemprop = "name" class = "page-title">Game List</h1>
+
+    <div class="all-games">
+      <ul>
+          {% for game_id,game in games.items() %}
+        <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+          <a itemprop = "URL" rel="item" href="games/{{game.game_id}}">{{game.title}}</a>
+          <meta itemprop = "position" content = "1">
+        </li>
+          {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+
+  <!--<form class ="game-search" method="GET">-->
+      <!--<input type="text" name="search" placeholder="Search..">-->
+      <!--<input type="submit" value="Submit">-->
+  <!--</form>-->
+
+  <form class = "post-game" action ="" method = "POST">
+    <h4>Add a New Game</h4>
+    Title:<br>
+    <input type="text" name="title"><br>
+    Description:<br>
+    <input type="text" name="description"><br>
+    <input type="submit" value="Submit">
+</form>
+
+</div>
+</body>
+</html>
