@@ -61,10 +61,6 @@ all-users
 
 	Describes all users
 
-banned-users
-
-	Describes all banned users
-
 all-games
 
 	Describes the list of all games in the service
